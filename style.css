@@ -6,21 +6,56 @@
 :root {
   font-size: 16px;
   box-sizing: border-box;
-  --sidebar-color: rgb(141, 184, 219);
+  --sidebar-color: #f9a8d4;
   --cards-color: white;
-  --background-color: lightgray;
+  --background-color: #ececeb;
   --header--background: white;
 }
 
 li:hover {
   text-decoration: underline;
   color: red;
+  cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.title:hover,
+div.main [class$="title"]:hover {
   color: red;
+  cursor: pointer;
 }
 
+.title:hover::after {
+  content: " :)";
+}
+.card:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.name:hover:hover,
+.name-large:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+div[class^="user"]:hover {
+  background-color: orange;
+  border-radius: 1rem;
+}
+
+.avatar-large:hover,
+.picture:hover,
+.search-icon:hover,
+.bell-icon:hover {
+  transform: scale(1.1);
+}
+
+input {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
 body {
   display: grid;
   grid-template: 1fr 5fr / 2fr 7fr;
@@ -34,9 +69,10 @@ body {
   display: grid;
   height: 80vh;
   margin-top: 2rem;
-  padding: 1rem 0;
+  padding: 1rem;
   display: grid;
   height: 80vh;
+  padding-bottom: 2rem;
 }
 
 .projects {
@@ -44,23 +80,6 @@ body {
   grid-template: repeat(3, 1fr) / repeat(2, 1fr);
   gap: 1rem;
   grid-area: 2 / 1 / 5 / 3;
-}
-
-.card {
-  width: minmax(1fr, 120px);
-  height: 100%;
-  text-align: center;
-  background-color: var;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  border-left: rgb(248, 197, 29) 0.5rem solid;
-}
-
-h2 {
-  font-size: 1.3rem;
-  text-align: left;
-  margin-top: 0.5rem;
-  margin-left: 1rem;
 }
 
 .projects {
@@ -78,7 +97,7 @@ h2 {
   background-color: var(--cards-color);
   border-radius: 1rem;
   padding: 0.5rem;
-  border-left: rgb(248, 197, 29) 0.5rem solid;
+  border-left: var(--sidebar-color) 0.5rem solid;
 }
 
 h2 {
@@ -96,20 +115,22 @@ p {
 
 .trending {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template: repeat(4, 1fr);
   grid-area: 4 /3 / 5/ 4;
   row-gap: 1rem;
   background-color: var(--cards-color);
   margin: 0.5rem 1rem 1rem 1rem;
   border: 2px white solid;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
+  width: 35ch;
 }
 
 .trending div[class^="user"] {
   display: grid;
   grid-template: 1fr 1fr / 3rem 1fr;
   column-gap: 1rem;
+  width: 70%;
 }
 
 .trending div[class^="user"] img.avi {
@@ -117,19 +138,16 @@ p {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  margin-left: 1rem;
 }
 
 .trending div h4.user {
   grid-area: 1 / 2 / 2 / 3;
   align-self: end;
-  margin-left: 1rem;
 }
 
 p.software {
   grid-area: 2 / 2 / 3 / 3;
   align-self: start;
-  margin-left: 1rem;
 }
 
 .announcements {
@@ -138,6 +156,7 @@ p.software {
   grid-template-rows: repeat(3, 1fr);
   gap: 0.5rem;
   background-color: var(--cards-color);
+  width: 35ch;
   padding: 2rem;
   align-items: center;
   margin: 2rem 1rem 1rem 1rem;
@@ -179,6 +198,7 @@ h3 {
   grid-template-rows: 1fr 3fr 3fr 20vh;
   font-size: 1.5rem;
   color: var(--header--background);
+  padding-bottom: 3rem;
 }
 
 ul {
@@ -242,7 +262,8 @@ ul li {
 
 .name {
   grid-column: 3/4;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   align-self: center;
   margin-left: 1.5rem;
 }
